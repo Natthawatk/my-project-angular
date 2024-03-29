@@ -1,0 +1,188 @@
+<body>
+  <app-header></app-header>
+  <div>
+    <div
+      style="
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-top: 20px;
+      "
+    >
+      <h1>Vote for your favorite character.</h1>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        margin-top: 30px;
+        justify-content: space-around;
+        margin-left: 100px;
+        margin-right: 100px;
+      "
+    >
+      <div
+        *ngIf="randompic"
+        style="
+          display: flex;
+          flex-direction: row;
+          margin-top: 30px;
+          justify-content: space-around;
+        "
+      >
+        <mat-card class="card">
+          <mat-card-content class="cardcontent">
+            <img
+              src="{{ randompic.pic1.imageURL }}"
+              alt="pic1"
+              class="img"
+              (click)="voteForPicture(randompic.pic1.imageID)"
+            />
+          </mat-card-content>
+          <h2 style="margin-top: 10px; align-items: center">
+            Name: {{ randompic.pic1.imageName }}
+          </h2>
+          <h2 style="align-items: center">
+            Score: {{ randompic.pic1.voteCount }}
+          </h2>
+        </mat-card>
+        <img src="/assets/image/vs.png" alt="vs" width="10%" />
+        <mat-card class="card">
+          <mat-card-content class="cardcontent">
+            <img
+              src="{{ randompic.pic2.imageURL }}"
+              alt="pic1"
+              class="img"
+              (click)="voteForPicture(randompic.pic1.imageID)"
+            />
+          </mat-card-content>
+          <h2 style="margin-top: 10px; align-items: center">
+            Name: {{ randompic.pic2.imageName }}
+          </h2>
+          <h2 style="align-items: center">
+            Score: {{ randompic.pic2.voteCount }}
+          </h2>
+        </mat-card>
+      </div>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+      "
+    >
+      <button mat-raised-button (click)="getRandomPictures()">Random</button>
+    </div>
+  </div>
+
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      margin-top: 5%;
+      margin-left: 250px;
+      margin-right: 250px;
+    "
+  >
+    <div style="display: flex; flex-direction: row">
+      <h1 style="font-size: 24px; color: #1569c7">|</h1>
+      <h1 style="font-size: 24px; margin-left: 10px">Top 10 TODAY</h1>
+    </div>
+  </div>
+
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+      margin-left: 200px;
+      margin-right: 200px;
+      justify-content: start;
+    "
+  >
+    <div *ngIf="this.top10Data1.length > 0 && this.top10Data2.length > 0">
+      <div *ngFor="let item of top10Data1; let i = index">
+        <mat-card
+          class="cardtop10"
+          style="margin-top: 10px; margin-bottom: 20px"
+        >
+          <div style="display: flex; flex-direction: row">
+            <mat-card-content>
+              <img [src]="item.imageURL" alt="top10" class="imgtop10" />
+            </mat-card-content>
+            <div
+              style="display: flex; flex-direction: column; margin-left: 10px"
+            >
+              <div style="display: flex; flex-direction: row">
+                <img
+                  [src]="top10Data2[i].avatar"
+                  alt="profile"
+                  class="imageProfile"
+                  (click)="showprofile(item)"
+                />
+                <h4 class="user">{{ top10Data2[i].username }}</h4>
+              </div>
+              <!-- <button (click)="statPage(item)" style="width: 60px; height: 20px;">View</button> -->
+              <h4 style="margin-top: 10px" class="fontcolor">
+                {{ item.imageName }}
+              </h4>
+              <h4 class="fontcolor">Score: {{ item.voteCount }}</h4>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-left: 60%;
+                margin-right: 10%;
+              "
+            >
+              <!-- <div style="margin-right: 50px;">
+                <button
+                  mat-fab
+                  color="primary"
+                  (click)="statPage(item)"
+                  aria-label="Example icon button with a delete icon"
+                  class="stat"
+                >
+                  <mat-icon>query_stats</mat-icon>
+                </button>
+              </div> -->
+              <div *ngIf="getrank[i].diff > 0">
+                <h2 class="fontcolor">
+                  +{{ getrank[i].diff }}
+                  <mat-icon style="color: green">arrow_upward</mat-icon>
+                </h2>
+              </div>
+              <div *ngIf="getrank[i].diff < 0">
+                <h2 class="fontcolor">
+                  {{ getrank[i].diff }}
+                  <mat-icon style="color: red">arrow_downward</mat-icon>
+                </h2>
+              </div>
+              <div *ngIf="getrank[i].diff == 0">
+                <h2 class="fontcolor">NO</h2>
+              </div>
+              <div style="margin-left: 50px;">
+                <button
+                  mat-fab
+                  color="primary"
+                  (click)="statPage(item.imageID)"
+                  aria-label="Example icon button with a delete icon"
+                  class="stat"
+                >
+                  <mat-icon>query_stats</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</body>

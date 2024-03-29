@@ -1,0 +1,33 @@
+span{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.card{
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.cardcontent{
+    object-fit: cover;
+}
+
+
+.img{
+    width: 220px;
+    height: 270px;
+    object-fit: cover;
+}
+
+button{
+    border-radius: 20px 20px 20px 20px;
+    width: 100px;
+    height: 50px;
+}

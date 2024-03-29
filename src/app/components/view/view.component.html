@@ -1,0 +1,78 @@
+<body>
+    
+    <mat-toolbar
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 80px;
+      background-color: #151b54;
+    "
+  >
+    <span style="font-size: 32px">Anime Mash</span>
+    </mat-toolbar>
+  
+    <div *ngIf="data" class="profile">
+      <div style="display: flex; flex-direction: row; justify-content: flex-start">
+        <img [src]="data.avatar" style="margin-left: 50px; border-radius: 50%; object-fit: cover" width="13.18%"/>
+        <div>
+          <h1 style="
+              margin-left: 50px;
+              margin-top: 60px;
+              font-weight: bold;
+              font-size: 30px;
+              color: #1d4d83;
+            ">
+            {{ data.username }}
+          </h1>
+        </div>
+      </div>
+  </div>
+  
+  
+  <br />
+  <hr style="margin-left: 150px; margin-right: 150px; margin-top: 66px" />
+  <br />
+  
+    <ng-template ngIf="allimage.length > 0">
+      <div>
+        <div style="display: flex; flex-direction: row">
+          <mat-icon style="margin-left: 150px">photo_library</mat-icon>
+          <h2 style="margin-left: 10px">ALL PICTURES</h2>
+        </div>
+        <div style="
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            justify-content: start;
+            margin-left: 150px;
+            margin-right: 150px;
+            flex-wrap: nowrap; /* เพิ่ม flex-wrap: nowrap เพื่อไม่ให้ข้อมูลขยับลงล่าง */
+          ">
+          <div *ngFor="let item of allimage" style="
+              display: flex; /* เพิ่ม display: flex เพื่อให้มีลักษณะเป็น flex container */
+              flex-wrap: nowrap; /* ให้ flex container ย่อยไม่ขยับไปข้างล่าง */
+              justify-content: start; /* ให้ข้อมูลภายใน container ย่อยจัดตำแหน่งชิดซ้าย */
+              flex-direction: column;
+              margin-left: 20px;
+              margin-bottom: 20px;
+            ">
+            <div>
+              <h2 style="margin-bottom: 5px">{{ item.imageName }}</h2>
+            </div>
+            <div>
+              <img src="{{ item.imageURL }}" alt="photo" width="200" height="300" style="
+                  border: 1px solid #fff; /* กรอบรูป */
+                  border-radius: 8px; /* ทำมุมโค้งบางนิด */
+                " />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  
+    <ng-template ngIf="allimage.length == 0">
+      <hr style="margin-left: 150px; margin-right: 150px" />
+      <router-outlet></router-outlet>
+    </ng-template>
+  </body>

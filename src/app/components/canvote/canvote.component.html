@@ -1,0 +1,73 @@
+<div>
+    <div
+  style="
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+  "
+>
+  <h1>Vote for your favorite character.</h1>
+</div>
+
+<div
+  style="
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: space-around;
+    margin-left: 100px;
+    margin-right: 100px;
+  "
+>
+  <div
+    *ngIf="randompic"
+    style="
+      display: flex;
+      flex-direction: row;
+      margin-top: 30px;
+      justify-content: space-around;
+    "
+  >
+    <mat-card class="card">
+      <mat-card-content class="cardcontent">
+        <img src="{{ randompic.pic1.imageURL }}" alt="pic1" class="img" />
+      </mat-card-content>
+      <h2 style="margin-top: 10px; align-items: center">
+        Name: {{ randompic.pic1.imageName }}
+      </h2>
+    </mat-card>
+    <h1
+      style="
+        font-size: 64px;
+        margin-top: 10%;
+        margin-left: 20px;
+        margin-right: 20px;
+      "
+    >
+      VS.
+    </h1>
+    <mat-card class="card">
+      <mat-card-content class="cardcontent">
+        <img src="{{ randompic.pic2.imageURL }}" alt="pic1" class="img" />
+      </mat-card-content>
+      <h2 style="margin-top: 10px; align-items: center">
+        Name: {{ randompic.pic2.imageName }}
+      </h2>
+    </mat-card>
+  </div>
+</div>
+
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  "
+>
+  <button mat-raised-button (click)="getRandomPictures()">
+    <mat-icon style="margin-right: 10px">refresh</mat-icon>Random
+  </button>
+</div>
+</div>
