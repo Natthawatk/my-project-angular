@@ -9,12 +9,13 @@ import { UserPostRequest } from '../../model/data_get_res';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms'; 
+import { HeaderComponent } from '../index/header/header.component';
 
 
 @Component({
   selector: 'app-editprofile',
   standalone: true,
-  imports: [MatToolbar, MatButton, MatCardModule, MatIconModule, CommonModule, FormsModule, MatButtonModule],
+  imports: [MatToolbar, MatButton, MatCardModule, MatIconModule, CommonModule, FormsModule, MatButtonModule, HeaderComponent],
   templateUrl: './editprofile.component.html',
   styleUrl: './editprofile.component.scss',
 })
